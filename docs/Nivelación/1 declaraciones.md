@@ -1,3 +1,6 @@
+---
+layout: post
+---
 # Declaración de variables
 
 Una variable es el conjunto de un nombre que se le da a la o las celdas de memoria que almacenan los datos asignados, y los datos asignados al nombre. Los datos almacenados pueden ser cualquier cosa (literalmente) y en javascript pueden mutar su tipo.
