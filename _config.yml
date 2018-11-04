@@ -1,1 +1,3 @@
 theme: jekyll-theme-midnight
+include:
+  - Nivelación/1 declaraciones.md
