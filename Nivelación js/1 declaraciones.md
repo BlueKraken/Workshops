@@ -47,6 +47,8 @@ function () {
 }
 ```
 
+En el ejemplo se puede ver como no se puede acceder a `suma` fuera del ciclo for, pero si a `sumaVar`. Esto se da porque var *escapa* de su *scope* en ciertos escenarios (la mayoría), lo que puede incurrir en fugas de memoria y/o efectos secundarios no deseados.
+
 ## Constantes
 
 Las constantes no pueden ser reasignadas, pero sus propiedades si
