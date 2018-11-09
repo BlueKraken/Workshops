@@ -2,7 +2,7 @@ const Markdown = require('markdown-to-html').GithubMarkdown;
 const fs = require('fs');
 const path = require('path');
 
-const parentDir = 'public';
+const parentDir = 'docs';
 
 const options = {
     stylesheet: '../github-markdown.css',
