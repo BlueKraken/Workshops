@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\2 tipos primitivos.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-tipos-primitivos" class="anchor" href="#tipos-primitivos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tipos primitivos</h1>
+<h2>
+<a id="user-content-strings" class="anchor" href="#strings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>strings</h2>
+<p>Se pueden definir con comillas simples o dobles</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">saludo</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>hola mundo<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">mensaje</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>todo bien aquí<span class="pl-pds">"</span></span>;</pre></div>
+<h2>
+<a id="user-content-string-literals-o-templates" class="anchor" href="#string-literals-o-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>string literals (o templates)</h2>
+<p>Se definen con tíldes y acepta variables que son interpretadas en <em>runtime</em>. Los saltos de línea dentro de éstos son interpretados como se esperaría.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> mensajeLargo <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">`</span></span>
+<span class="pl-s">    String templates pueden ser usados para</span>
+<span class="pl-s">    escribir mensajes de multiples líneas y</span>
+<span class="pl-s">    acepta variables. Los saltos de línea se respetan.</span>
+<span class="pl-s"><span class="pl-pds">`</span></span>;
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(mensajeLargo)
+<span class="pl-c"><span class="pl-c">//</span> String templates pueden ser usados para</span>
+<span class="pl-c"><span class="pl-c">//</span> escribir mensajes de multiples líneas y</span>
+<span class="pl-c"><span class="pl-c">//</span> acepta variables. Los saltos de línea se respetan.</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">saludo</span> <span class="pl-k">=</span> (<span class="pl-smi">nombre</span>) <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">`</span>hola <span class="pl-s1"><span class="pl-pse">${</span>nombre<span class="pl-pse">}</span></span>!<span class="pl-pds">`</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">mensaje</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">`</span><span class="pl-s1"><span class="pl-pse">${</span><span class="pl-en">saludo</span>(<span class="pl-s"><span class="pl-pds">'</span>Gonzalo<span class="pl-pds">'</span></span>)<span class="pl-pse">}</span></span>. Cómo estás?<span class="pl-pds">`</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">miboton</span> <span class="pl-k">=</span> <span class="pl-smi">datos</span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">`</span></span>
+<span class="pl-s">    &lt;button onclick="<span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">datos</span>.<span class="pl-smi">accion</span><span class="pl-pse">}</span></span>"&gt;</span>
+<span class="pl-s">        <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">datos</span>.<span class="pl-smi">nombre</span><span class="pl-pse">}</span></span></span>
+<span class="pl-s">    &lt;/button&gt;<span class="pl-pds">`</span></span>;</pre></div>
+<h2>
+<a id="user-content-floats-todos-los-números-en-javascript-son-flotantes" class="anchor" href="#floats-todos-los-n%C3%BAmeros-en-javascript-son-flotantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>floats (todos los números en javascript son flotantes)</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> minumero <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+minumero <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>10<span class="pl-pds">'</span></span> <span class="pl-k">*</span> <span class="pl-c1">2</span> <span class="pl-c"><span class="pl-c">//</span> 20</span>
+minumero <span class="pl-k">=</span> <span class="pl-c1">3</span> <span class="pl-k">*</span> <span class="pl-s"><span class="pl-pds">'</span>10<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">//</span> 30</span>
+</pre></div>
+<h2>
+<a id="user-content-booleanos" class="anchor" href="#booleanos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>booleanos</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">esfalso</span> <span class="pl-k">=</span> <span class="pl-c1">false</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">esVerdadero</span> <span class="pl-k">=</span> <span class="pl-c1">10</span> <span class="pl-k">&lt;</span> <span class="pl-c1">30</span>;</pre></div>
+
+</body>
+</html>

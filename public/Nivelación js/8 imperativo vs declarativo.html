@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\8 imperativo vs declarativo.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-programación-imperativa-vs-declarativa" class="anchor" href="#programaci%C3%B3n-imperativa-vs-declarativa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programación imperativa vs declarativa</h1>
+<ul>
+<li>Expresión imperativa: Expresa qué se está haciendo con todos sus detalles y pasos necesarios. Deja de lado el <strong>qué</strong> y expresa del <strong>cómo</strong> se manejan los datos</li>
+<li>Expresión declarativa: Expresa la intención de lo que se va a hacer, no sus detalles ni los pasos exactos a seguir. Deja de lado el <strong>cómo</strong> y expresa el <strong>qué</strong> se hará con los datos.</li>
+</ul>
+<p>Ejemplo: Se quiere obtener los talentos del personaje de id 5 y prepararlos para mostrarse en la lista de talentos de la UI.</p>
+<h2>
+<a id="user-content-estilo-imperativo" class="anchor" href="#estilo-imperativo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Estilo imperativo</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">personaje</span> <span class="pl-k">=</span> <span class="pl-smi">Personajes</span>.<span class="pl-en">getPersonaje</span>(<span class="pl-c1">5</span>);
+
+<span class="pl-k">const</span> <span class="pl-c1">talentosCurados</span> <span class="pl-k">=</span> [];
+<span class="pl-k">for</span>(<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">personaje</span>.<span class="pl-smi">talentos</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-k">const</span> <span class="pl-c1">talentoCurado</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">`</span></span>
+<span class="pl-s">        &lt;p&gt; <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">nombre</span><span class="pl-pse">}</span></span> <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">tipo</span><span class="pl-pse">}</span></span> &lt;/p&gt;,</span>
+<span class="pl-s">        &lt;small&gt; coste: <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">coste</span><span class="pl-pse">}</span></span> &lt;/small&gt;</span>
+<span class="pl-s">    <span class="pl-pds">`</span></span>;
+    <span class="pl-smi">talentosCurados</span>.<span class="pl-c1">push</span>(talentoCurado);
+}
+
+<span class="pl-en">mostrarLista</span>(talentosCurados);</pre></div>
+<p>Se puede ver con detalle qué se está haciendo con la lista, cómo se está recorriendo, en que orden, que se hace en cada iteración, etc. Esto permite que la <strong>intención</strong> del bloque de código se pierda y deba ser interpretado por el desarrollador.</p>
+<p>Se puede limpiar el código extrayendo la función <code>curarTalento(talento)</code>, pero sigue siendo dificil entender la intención del ciclo a primera vista.</p>
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">function</span> <span class="pl-en">curarTalento</span>(<span class="pl-smi">talento</span>) {
+    <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">`</span>&lt;p&gt; <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">nombre</span><span class="pl-pse">}</span></span> <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">tipo</span><span class="pl-pse">}</span></span> &lt;/p&gt;,</span>
+<span class="pl-s">        &lt;small&gt; coste: <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">coste</span><span class="pl-pse">}</span></span> &lt;/small&gt;<span class="pl-pds">`</span></span>;
+}
+
+<span class="pl-k">const</span> <span class="pl-c1">personaje</span> <span class="pl-k">=</span> <span class="pl-smi">Personajes</span>.<span class="pl-en">getPersonaje</span>(<span class="pl-c1">5</span>);
+
+<span class="pl-k">const</span> <span class="pl-c1">talentosCurados</span> <span class="pl-k">=</span> []
+<span class="pl-k">for</span>(<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">personaje</span>.<span class="pl-smi">talentos</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-k">const</span> <span class="pl-c1">talentoCurado</span> <span class="pl-k">=</span> <span class="pl-en">curarTalento</span>(<span class="pl-smi">personaje</span>.<span class="pl-smi">talentos</span>[i]);
+    <span class="pl-smi">talentosCurados</span>.<span class="pl-c1">push</span>(talentoCurado);
+}</pre></div>
+<h2>
+<a id="user-content-estilo-declarativo" class="anchor" href="#estilo-declarativo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Estilo declarativo</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">personaje</span> <span class="pl-k">=</span> <span class="pl-smi">Personajes</span>.<span class="pl-en">getPersonaje</span>(<span class="pl-c1">5</span>);
+
+<span class="pl-k">const</span> <span class="pl-c1">talentosCurados</span> <span class="pl-k">=</span> <span class="pl-smi">personaje</span>.<span class="pl-smi">talentos</span>.<span class="pl-en">map</span>(<span class="pl-smi">talento</span> <span class="pl-k">=&gt;</span>
+    <span class="pl-s"><span class="pl-pds">`</span>&lt;p&gt; <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">nombre</span><span class="pl-pse">}</span></span> <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">tipo</span><span class="pl-pse">}</span></span> &lt;/p&gt;,</span>
+<span class="pl-s">    &lt;small&gt; coste: <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">coste</span><span class="pl-pse">}</span></span> &lt;/small&gt;<span class="pl-pds">`</span></span>);
+
+<span class="pl-en">mostrarLista</span>(talentosCurados)</pre></div>
+<p>Si ahora extraemos la función <code>curarTalento(talento)</code>:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">curarTalento</span>(<span class="pl-smi">talento</span>) {
+    <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">`</span>&lt;p&gt; <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">nombre</span><span class="pl-pse">}</span></span> <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">tipo</span><span class="pl-pse">}</span></span> &lt;/p&gt;,</span>
+<span class="pl-s">        &lt;small&gt; coste: <span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">talento</span>.<span class="pl-smi">coste</span><span class="pl-pse">}</span></span> &lt;/small&gt;<span class="pl-pds">`</span></span>;
+}
+
+<span class="pl-k">const</span> <span class="pl-c1">personaje</span> <span class="pl-k">=</span> <span class="pl-smi">Personajes</span>.<span class="pl-en">getPersonaje</span>(<span class="pl-c1">5</span>)
+
+<span class="pl-k">const</span> <span class="pl-c1">talentosCurados</span> <span class="pl-k">=</span> <span class="pl-smi">personaje</span>.<span class="pl-smi">talentos</span>.<span class="pl-en">map</span>(<span class="pl-smi">talento</span> <span class="pl-k">=&gt;</span> <span class="pl-en">curarTalento</span>(talento));
+
+<span class="pl-en">mostrarLista</span>(talentosCurados);</pre></div>
+<p>Podemo refactorizar el código para hacerlo aún más declarativo</p>
+<ul>
+<li>pasando el talento a la función <code>curarTalento</code> implícitamente</li>
+<li>ahorrándonos la asignación de <code>personaje</code>
+</li>
+<li>dejando la función curarTalento en otro módulo e importándolo</li>
+</ul>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">curarTalento</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>./talentos/helpers.js<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">talentosCurados</span> <span class="pl-k">=</span> Personajes
+    .<span class="pl-en">getPersonaje</span>(<span class="pl-c1">5</span>)
+    .<span class="pl-smi">talentos</span>
+    .<span class="pl-en">map</span>(curarTalento);
+
+<span class="pl-en">mostrarLista</span>(talentosCurados);</pre></div>
+<p>Se ve claramente como los talentos curados se obtienen de <code>Personajes</code>, obteniendo el con id 5 (<code>getPersonaje</code>), seleccionando los <code>talentos</code> de éste y procesando cada uno con la función <code>curarTalento</code></p>
+
+</body>
+</html>

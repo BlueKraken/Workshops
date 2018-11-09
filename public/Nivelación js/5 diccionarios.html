@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\5 diccionarios.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-diccionarios" class="anchor" href="#diccionarios" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diccionarios</h1>
+<p>LLamamos diccionario a una colección de recursos que no cambiará durante la ejecución del programa. Como los nombres de los días de semana, o tipos de ataque existentes.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span> Para procurar que el objeto no pueda ser modificado, lo "congelamos"</span>
+<span class="pl-k">const</span> <span class="pl-c1">DiaDeSemana</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({
+    lunes<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>lunes<span class="pl-pds">'</span></span>,
+    martes<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>martes<span class="pl-pds">'</span></span>,
+    miercoles<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>miércoles<span class="pl-pds">'</span></span>,
+    jueves<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>jueves<span class="pl-pds">'</span></span>,
+    viernes<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>viernes<span class="pl-pds">'</span></span>
+});</pre></div>
+<p>Si vemos un diccionario como un almacén de conceptos o descripciones, muchas cosas pueden ser un diccionario. En cada lenguaje o mesa de trabajo (<em>framework</em>) existen preferencias por la comunidad y/o caso de uso para definir un diccionario, pocas veces hay una manera <em>correcta</em> de hacerlo. En javascript podemos utilizar:</p>
+<h2>
+<a id="user-content-colección-simple" class="anchor" href="#colecci%C3%B3n-simple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Colección simple</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">elementos</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>([
+    {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fuego<span class="pl-pds">'</span></span>},
+    {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>tierra<span class="pl-pds">'</span></span>},
+    {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>agua<span class="pl-pds">'</span></span>},
+    {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>aire<span class="pl-pds">'</span></span>}
+]);
+
+<span class="pl-k">const</span> <span class="pl-c1">elementoFuego</span> <span class="pl-k">=</span> elementos[<span class="pl-c1">0</span>];
+<span class="pl-k">const</span> <span class="pl-c1">elementoAgua</span> <span class="pl-k">=</span> <span class="pl-smi">elementos</span>.<span class="pl-c1">find</span>(<span class="pl-smi">e</span> <span class="pl-k">=&gt;</span> <span class="pl-smi">e</span>.<span class="pl-smi">nombre</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>agua<span class="pl-pds">'</span></span>);</pre></div>
+<h2>
+<a id="user-content-objeto" class="anchor" href="#objeto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objeto</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">elementos</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({
+    fuego<span class="pl-k">:</span> {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fuego<span class="pl-pds">'</span></span>},
+    tierra<span class="pl-k">:</span> {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>tierra<span class="pl-pds">'</span></span>},
+    agua<span class="pl-k">:</span> {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>agua<span class="pl-pds">'</span></span>},
+    aire<span class="pl-k">:</span> {nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>aire<span class="pl-pds">'</span></span>}
+});
+
+<span class="pl-k">const</span> <span class="pl-c1">elementoFuego</span> <span class="pl-k">=</span> <span class="pl-smi">elementos</span>.<span class="pl-smi">fuego</span>;
+<span class="pl-k">const</span> <span class="pl-c1">elementoAgua</span> <span class="pl-k">=</span> elementos[<span class="pl-s"><span class="pl-pds">'</span>agua<span class="pl-pds">'</span></span>];</pre></div>
+<h2>
+<a id="user-content-lista-no-almacenada" class="anchor" href="#lista-no-almacenada" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lista no almacenada</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">FUEGO</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fuego<span class="pl-pds">'</span></span>});
+<span class="pl-k">const</span> <span class="pl-c1">TIERRA</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>tierra<span class="pl-pds">'</span></span>});
+<span class="pl-k">const</span> <span class="pl-c1">AGUA</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>agua<span class="pl-pds">'</span></span>});
+<span class="pl-k">const</span> <span class="pl-c1">AIRE</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>aire<span class="pl-pds">'</span></span>});</pre></div>
+<h2>
+<a id="user-content-conclusiones" class="anchor" href="#conclusiones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Conclusiones</h2>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Observaciones</th>
+<th>Conclusión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colección simple</td>
+<td>Difícil de buscar y chequear conceptos</td>
+<td>Evitar uso</td>
+</tr>
+<tr>
+<td>Objeto</td>
+<td>Fácil de buscar y chequear conceptos, pero su uso es demandante cuando se trata de diccionarios muy grandes</td>
+<td>Utilizar en la mayoría de casos de uso</td>
+</tr>
+<tr>
+<td>Lista no almacenada</td>
+<td>Cada concepto es independiente, lo cual ayuda a su manejo, pero implica importar o buscar elementos que no tienen relación lógica entre ellos</td>
+<td>Utilizar para diccionarios grandes (cientos de conceptos)</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

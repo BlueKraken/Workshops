@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\6 colecciones.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-colecciones" class="anchor" href="#colecciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Colecciones</h1>
+<h2>
+<a id="user-content-arreglos" class="anchor" href="#arreglos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arreglos</h2>
+<p>Representa un conjunto de datos de un tipo en común. Pueden tener varias dimensiones</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span> Lista</span>
+<span class="pl-k">const</span> <span class="pl-c1">personajes</span> <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>link<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>zelda<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>ganondorf<span class="pl-pds">'</span></span>]
+
+<span class="pl-k">const</span> <span class="pl-c1">link</span> <span class="pl-k">=</span> <span class="pl-smi">personajes</span>.<span class="pl-c1">find</span>(<span class="pl-smi">personaje</span> <span class="pl-k">=&gt;</span> personaje <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>link<span class="pl-pds">'</span></span>);
+
+<span class="pl-c"><span class="pl-c">//</span> Matriz</span>
+<span class="pl-k">const</span> <span class="pl-c1">matriz</span> <span class="pl-k">=</span> [
+    [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>],
+    [<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>],
+    [<span class="pl-c1">9</span>,<span class="pl-c1">7</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>]
+];
+
+matriz[<span class="pl-c1">0</span>][<span class="pl-c1">0</span>] <span class="pl-c"><span class="pl-c">//</span> 1</span>
+matriz[<span class="pl-c1">2</span>][<span class="pl-c1">1</span>] <span class="pl-c"><span class="pl-c">//</span> 7</span>
+
+<span class="pl-c"><span class="pl-c">//</span> Plano tridimensional</span>
+<span class="pl-k">const</span> <span class="pl-c1">r3</span> <span class="pl-k">=</span> [
+    [
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+    ],[
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+        [<span class="pl-c1">0</span>,<span class="pl-c1">1</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+    ],[
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+        [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">3</span>,<span class="pl-c1">0</span>]
+        [<span class="pl-c1">3</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]
+    ]
+];</pre></div>
+<p>También se puede utilizar un objeto como un conjunto de propiedades con un identificador</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">nivelDeDestreza</span> <span class="pl-k">=</span> {
+    espada<span class="pl-k">:</span> <span class="pl-c1">5</span>,
+    arco_flecha<span class="pl-k">:</span> <span class="pl-c1">8</span>,
+    escudo<span class="pl-k">:</span> <span class="pl-c1">3</span>,
+    daga<span class="pl-k">:</span> <span class="pl-c1">15</span>
+};
+
+<span class="pl-smi">nivelDeDestreza</span>.<span class="pl-smi">espada</span><span class="pl-k">++</span>;
+<span class="pl-c"><span class="pl-c">//</span> nivelDeDestreza.espada == 6</span></pre></div>
+<h2>
+<a id="user-content-iteración-de-colecciones" class="anchor" href="#iteraci%C3%B3n-de-colecciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Iteración de colecciones</h2>
+<p>La iteración o procesamiento de colecciones son un imán de bloques imperativos, como ciclos <code>for</code>. Por eso se recomienda utilizar funciones más declarativas para iterar y procesar sus elementos.</p>
+<h3>
+<a id="user-content-foreach" class="anchor" href="#foreach" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Foreach</h3>
+<p>Lo más parecido a un for común y corriente, itera cada elemento de la colección y aplica una función sobre éste. Retorna nulo.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">asignaturas</span> <span class="pl-k">=</span> [
+    <span class="pl-s"><span class="pl-pds">'</span>cálculo 1<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>Programación 1<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>Taller de base de datos<span class="pl-pds">'</span></span>];
+
+<span class="pl-c"><span class="pl-c">//</span> Ambas son válidas y funcionan *casi* igual. Para la mayoría de</span>
+<span class="pl-c"><span class="pl-c">//</span> los casos de uso, se utiliza la primera versión.</span>
+<span class="pl-smi">asignaturas</span>.<span class="pl-c1">forEach</span>(<span class="pl-smi">asignatura</span> <span class="pl-k">=&gt;</span> { <span class="pl-en">console</span>.<span class="pl-c1">log</span>(asignatura) });
+<span class="pl-smi">asignaturas</span>.<span class="pl-c1">forEach</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>);</pre></div>
+<h3>
+<a id="user-content-map" class="anchor" href="#map" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Map</h3>
+<p>Aplica una función sobre cada elemento del arreglo y devuelve una colección de los elementos resultantes.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">numeros</span> <span class="pl-k">=</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>];
+
+<span class="pl-k">const</span> <span class="pl-c1">numerosGrandes</span> <span class="pl-k">=</span> <span class="pl-smi">numeros</span>.<span class="pl-en">map</span>(<span class="pl-smi">n</span> <span class="pl-k">=&gt;</span> n <span class="pl-k">*</span> <span class="pl-c1">1000</span>);
+<span class="pl-c"><span class="pl-c">//</span> [1000, 2000, 3000, 4000, 5000, 6000]</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">doblar</span> <span class="pl-k">=</span> <span class="pl-smi">n</span> <span class="pl-k">=&gt;</span> <span class="pl-c1">2</span> <span class="pl-k">*</span> n;
+
+<span class="pl-k">const</span> <span class="pl-c1">numerosDoblados</span> <span class="pl-k">=</span> <span class="pl-smi">numeros</span>.<span class="pl-en">map</span>(doblar);
+<span class="pl-c"><span class="pl-c">//</span> [2, 4, 6, 8, 10, 12]</span></pre></div>
+<h3>
+<a id="user-content-reduce" class="anchor" href="#reduce" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reduce</h3>
+<p>Aplica una función acumulativa sobre los elementos de la colección.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">misCalificaciones</span> <span class="pl-k">=</span> [
+    {peso<span class="pl-k">:</span> <span class="pl-c1">30</span>, nota<span class="pl-k">:</span> <span class="pl-c1">5.0</span>},
+    {peso<span class="pl-k">:</span> <span class="pl-c1">25</span>, nota<span class="pl-k">:</span> <span class="pl-c1">6.0</span>},
+    {peso<span class="pl-k">:</span> <span class="pl-c1">25</span>, nota<span class="pl-k">:</span> <span class="pl-c1">4.8</span>},
+    {peso<span class="pl-k">:</span> <span class="pl-c1">20</span>, nota<span class="pl-k">:</span> <span class="pl-c1">5.7</span>},
+];
+
+<span class="pl-k">const</span> <span class="pl-c1">calcularPuntaje</span> <span class="pl-k">=</span> (<span class="pl-smi">calificacion</span>) <span class="pl-k">=&gt;</span>
+    calificacion <span class="pl-k">*</span> peso <span class="pl-k">/</span> <span class="pl-c1">100</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">notaPresentacion</span> <span class="pl-k">=</span> misCalificaciones
+    .<span class="pl-en">map</span>(calcularPuntaje)
+    .<span class="pl-en">reduce</span>((<span class="pl-smi">total</span>, <span class="pl-smi">actual</span>) <span class="pl-k">=&gt;</span> total <span class="pl-k">+=</span> actual);</pre></div>
+<p>Existen más funciones sobre aplicables a las colecciones. La API de Array.prototype tiene todas definidas y explicadas</p>
+
+</body>
+</html>

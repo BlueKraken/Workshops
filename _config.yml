@@ -1,6 +1,0 @@
-theme: jekyll-theme-midnight
-relative_links:
-  enabled: true
-  collections: true
-include:
-  - docs/Nivelación/1 declaraciones.md

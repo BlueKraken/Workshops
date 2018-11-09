@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\4 funciones.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-funciones" class="anchor" href="#funciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Funciones</h1>
+<h2>
+<a id="user-content-declaración" class="anchor" href="#declaraci%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Declaración</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">mifuncion</span>(<span class="pl-smi">parametro</span>) {
+    <span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c">    ...</span>
+<span class="pl-c">    <span class="pl-c">*/</span></span>
+    <span class="pl-k">return</span> resultado
+}</pre></div>
+<h2>
+<a id="user-content-asignación-como-expresión" class="anchor" href="#asignaci%C3%B3n-como-expresi%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Asignación como expresión</h2>
+<p>Las funciones también se pueden declarar como una expresión</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">mifuncion</span> <span class="pl-k">=</span> <span class="pl-k">function</span>(<span class="pl-smi">parametro</span>) {
+    <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+    <span class="pl-k">return</span> resultado;
+}</pre></div>
+<p>La diferencia entre ambas es que la segunda no es afectada por el <em>Hoisting</em> que implementa javascript. Pero, ¿Qué implica el hoisting?</p>
+<h2>
+<a id="user-content-funciones-lambda-o-arrow-functions" class="anchor" href="#funciones-lambda-o-arrow-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Funciones lambda o <em>arrow functions</em>
+</h2>
+<p>Son funciones anónimas (son asignadas, no declaradas). Permiten declarar pequeñas funcionalidades del sistema para hacer el código más declarativo.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">miFuncion</span>(<span class="pl-smi">parametro</span>) {
+    <span class="pl-k">return</span> parametro <span class="pl-k">+</span> <span class="pl-c1">1</span>
+}
+
+<span class="pl-k">const</span> <span class="pl-c1">miFuncionLambda</span> <span class="pl-k">=</span> (<span class="pl-smi">parametro</span>) <span class="pl-k">=&gt;</span> parametro <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">lambdaSinParametros</span> <span class="pl-k">=</span> () <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>hola mundo<span class="pl-pds">'</span></span>;</pre></div>
+<p>Tema de pérdida de this.</p>
+
+</body>
+</html>

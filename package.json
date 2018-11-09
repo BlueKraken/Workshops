@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "tohtml": "node compile-html.js"
+    },
+    "dependencies": {
+        "markdown-to-html":" ^0.0.13"
+    }
+}

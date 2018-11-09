@@ -1,0 +1,45 @@
+Enunciado 1.
+    Formulación: 9 de marzo
+    Revisión: 14 de marzo
+
+
+El equipo de mecánicas ha definido 3 nuevas armas con las siguientes características:
+
+    . Sable: es un arma cortante que infringe 10 de daño por ataque, tiene un 20% de probabilidad de dejar sangrando al enemigo por 3 turnos, infringiendo 5 de daño cada turno y un 5% de probabilidad de realizar el doble de daño.
+
+    . Daga: es un arma punzante que infringe 7 de daño por ataque y tiene un 40% de probabilidad de dejar sangrando al enemigo por 4 turnos, infringiendo 2 de daño cada turno.
+
+    . Maza: es una arma contundente que infringe 14 de daño por ataque y tiene un 8% de probabilidad de dejar aturdido al enemigo por 2 turnos.
+
+
+Diseñe y codifique todas las clases necesarias para definir las nuevas armas, procurando una estructura basada en herencia que permita la reutilización de estas clases para futuras armas, o cambios en las existentes.
+
+
+###########################################################
+
+
+Enunciado 2. 
+    Formulación: 9 de Marzo
+    Revisión: ???
+
+
+Diseñe y codifique las clases necesarias para que un personaje pueda recibir o perder bonificaciones que afecten a sus atributos según los siguientes requerimientos:
+
+. Un atributo es definido por su nombre y un valor base
+
+. El valor base de un atributo puede ser un valor estático, o la composición de otros atributos.
+
+. La lista de atributos de un personaje es manejada por éste.
+
+. Un personaje puede recibir bonificaciones para un atributo.
+
+. Los atributos deben exponer tanto su valor base, como su valor total (sumándole las bonificaciones).
+
+. Los valores base de los atributos de un personaje son definidos cuando se construye éste, según la siguiente lista:
+    * Aguante: 3
+    * Inteligencia: 5
+    * Destreza: 9
+    * Sabiduría: 4
+    * Fuerza: promedio aguante y destreza
+    * Agilidad: promedio de destreza e inteligencia
+    * Suerte: 3 veces sabiduría

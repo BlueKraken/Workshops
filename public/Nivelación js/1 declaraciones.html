@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\1 declaraciones.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-declaración-de-variables" class="anchor" href="#declaraci%C3%B3n-de-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Declaración de variables</h1>
+<p>Una variable es el conjunto de un nombre que se le da a la o las celdas de memoria que almacenan los datos asignados, y los datos asignados al nombre. Los datos almacenados pueden ser cualquier cosa (literalmente) y en javascript pueden mutar su tipo.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> a <span class="pl-k">=</span> <span class="pl-c1">5</span>;
+<span class="pl-c"><span class="pl-c">//</span> nombre: a</span>
+<span class="pl-c"><span class="pl-c">//</span> datos en memoria: 5</span>
+a <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>hola mundo<span class="pl-pds">'</span></span>;
+<span class="pl-c"><span class="pl-c">//</span> el intérprete acepta esta mutación del dato.</span>
+a <span class="pl-k">=</span> <span class="pl-c1">false</span>;
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(a) <span class="pl-c"><span class="pl-c">//</span> false;</span></pre></div>
+<h2>
+<a id="user-content-tipos-de-declaraciones" class="anchor" href="#tipos-de-declaraciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tipos de declaraciones</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span> variable que escapa el 'scope'</span>
+<span class="pl-k">var</span> mivariable <span class="pl-k">=</span> <span class="pl-c1">8</span>;
+
+<span class="pl-c"><span class="pl-c">//</span> variable que respeta el 'scope' en el que se encuentra</span>
+<span class="pl-k">let</span> variableRespetuosa <span class="pl-k">=</span> <span class="pl-c1">10</span>;</pre></div>
+<h3>
+<a id="user-content-let-vs-var-o-por-qué-nunca-se-debe-usar-var" class="anchor" href="#let-vs-var-o-por-qu%C3%A9-nunca-se-debe-usar-var" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>let</code> vs <code>var</code>, o por qué nunca se debe usar <code>var</code>
+</h3>
+<p>Antes de todo, es importante saber que este caso es propio de javascript.</p>
+<p>Para entender la diferencia, es necesario entender que es 'scope', el cual corresponde al bloque lógico accesible por las variables, objetos y funciones</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> () {
+    <span class="pl-k">const</span> <span class="pl-c1">constante</span> <span class="pl-k">=</span> <span class="pl-c1">10</span>;
+
+    <span class="pl-k">for</span>(<span class="pl-c"><span class="pl-c">/*</span>...<span class="pl-c">*/</span></span>) {
+        <span class="pl-c"><span class="pl-c">//</span> el scope de las variables, funciones y objetos</span>
+        <span class="pl-c"><span class="pl-c">//</span> definidas dentro del ciclo es el mismo ciclo.</span>
+        <span class="pl-c"><span class="pl-c">//</span> Es decir, son accesibles sólo desde aqui. Pero</span>
+        <span class="pl-c"><span class="pl-c">//</span> aquí se puede acceder al scope externo</span>
+        <span class="pl-k">var</span> sumaVar <span class="pl-k">=</span> <span class="pl-c1">10</span> <span class="pl-k">+</span> constante;
+
+        <span class="pl-k">let</span> suma <span class="pl-k">=</span> <span class="pl-c1">5</span> <span class="pl-k">+</span> constante;
+    }
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(suma) <span class="pl-c"><span class="pl-c">//</span> ReferenceError: suma is not defined</span>
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(variableVar) <span class="pl-c"><span class="pl-c">//</span> 20</span>
+}</pre></div>
+<h2>
+<a id="user-content-constantes" class="anchor" href="#constantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Constantes</h2>
+<p>Las constantes no pueden ser reasignadas, pero sus propiedades si</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">arma</span> <span class="pl-k">=</span> {
+    nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>arma cortante<span class="pl-pds">'</span></span>,
+    danio<span class="pl-k">:</span> <span class="pl-c1">5</span>,
+};
+
+<span class="pl-smi">arma</span>.<span class="pl-smi">danio</span> <span class="pl-k">=</span> <span class="pl-c1">10</span>; <span class="pl-c"><span class="pl-c">//</span> ok</span>
+
+arma <span class="pl-k">=</span> {
+    nombre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>arma cortante<span class="pl-pds">'</span></span>,
+    danio<span class="pl-k">:</span> <span class="pl-c1">10</span>
+} <span class="pl-c"><span class="pl-c">//</span> TypeError: Assignment to constant variable.</span></pre></div>
+<p>Hay maneras de tener una "constante real", utilizando <code>Object.freeze()</code></p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">llamarada</span> <span class="pl-k">=</span> <span class="pl-c1">Object</span>.<span class="pl-en">freeze</span>({
+    escuela<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>fuego<span class="pl-pds">'</span></span>,
+    efecto<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>quemar<span class="pl-pds">'</span></span>,
+    duracion<span class="pl-k">:</span> <span class="pl-c1">3</span>
+});
+
+<span class="pl-smi">llamarada</span>.<span class="pl-smi">duraci</span>ón <span class="pl-k">=</span> <span class="pl-c1">10</span> <span class="pl-c"><span class="pl-c">//</span> TypeError: Assignment to constant variable.</span></pre></div>
+<h2>
+<a id="user-content-hoisting" class="anchor" href="#hoisting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hoisting</h2>
+<blockquote>
+<p>"El concepto de Hoisting fue pensado como una manera general de referirse a cómo funcionan los contextos de  ejecución en JavaScript."</p>
+<p><a href="https://developer.mozilla.org/es/docs/Glossary/Hoisting" rel="nofollow">MDN web docs</a></p>
+</blockquote>
+<p>Veamos el siguiente ejemplo:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">miconstante</span> <span class="pl-k">=</span> <span class="pl-en">recibirAlgo</span>();
+
+<span class="pl-k">function</span> <span class="pl-en">recibirAlgo</span>() {
+    <span class="pl-k">return</span> <span class="pl-c1">5</span>;
+}</pre></div>
+<p><code>recibirAlgo()</code> es asignado en memoria antes de la ejecución del código, por lo que podemos usarla aún cuando se declara después de que se usa.</p>
+<p>Este fenómeno actúa sobre las declaraciones, no asignaciones, por ejemplo:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">miconstante</span> <span class="pl-k">=</span> <span class="pl-en">recibirAlgo</span>(); <span class="pl-c"><span class="pl-c">//</span> Reference Error, recibirAlgo() is not defined</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">recibirAlgo</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+    <span class="pl-k">return</span> <span class="pl-c1">5</span>;
+}</pre></div>
+<p>Dado que las clases en javascript corresponden a <em>sintaxis sugar</em> para declarar funciones con comportamiento, las <strong>declaraciones</strong> de clases también son <em>hoisteadas</em></p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-en">ClaseDeclarada</span>() {
+    <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+}
+
+<span class="pl-k">const</span> <span class="pl-c1">miClase</span> <span class="pl-k">=</span> <span class="pl-k">class</span> <span class="pl-en">ClaseAsignada</span>() {
+    <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+}</pre></div>
+
+</body>
+</html>

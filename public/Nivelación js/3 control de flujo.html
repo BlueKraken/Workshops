@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\3 control de flujo.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-control-de-flujo" class="anchor" href="#control-de-flujo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Control de flujo</h1>
+<h2>
+<a id="user-content-operadores-lógicos" class="anchor" href="#operadores-l%C3%B3gicos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Operadores lógicos</h2>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Símbolo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Igual</td>
+<td>==</td>
+</tr>
+<tr>
+<td>Distinto</td>
+<td>!==</td>
+</tr>
+<tr>
+<td>Igual estricto</td>
+<td>===</td>
+</tr>
+<tr>
+<td>Distinto estricto</td>
+<td>===</td>
+</tr>
+<tr>
+<td>Mayor a</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>Menor a</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>Mayor o igual a</td>
+<td>&gt;=</td>
+</tr>
+<tr>
+<td>Menor o igual a</td>
+<td>&lt;=</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>&amp;&amp;</td>
+</tr>
+<tr>
+<td>Ó</td>
+<td>||</td>
+</tr>
+</tbody>
+</table>
+<p>En javascript, ciertas comparaciones pueden resultar <code>true</code> o <code>false</code> cuando a simple vista no debería. Esto pasa porque el intérprete de javascript toma en cuenta como igual a ciertos casos especiales. Por esto se recomienda siempre utilizar <code>===</code> o <code>!==</code>. <a href="https://dorey.github.io/JavaScript-Equality-Table/" rel="nofollow">Tabla de equidad</a></p>
+<p>Por ejemplo:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">true</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>) <span class="pl-c"><span class="pl-c">//</span> true</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">true</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>) <span class="pl-c"><span class="pl-c">//</span> false</span>
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">0</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span>) <span class="pl-c"><span class="pl-c">//</span> true</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">0</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span>) <span class="pl-c"><span class="pl-c">//</span> false</span>
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">true</span> <span class="pl-k">==</span> <span class="pl-c1">1</span>) <span class="pl-c"><span class="pl-c">//</span> true</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">true</span> <span class="pl-k">===</span> <span class="pl-c1">1</span>) <span class="pl-c"><span class="pl-c">//</span> false</span>
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">false</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>) <span class="pl-c"><span class="pl-c">//</span> true</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">false</span> <span class="pl-k">===</span> <span class="pl-c1">0</span>) <span class="pl-c"><span class="pl-c">//</span> false</span>
+</pre></div>
+<h2>
+<a id="user-content-if-else" class="anchor" href="#if-else" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>If, else</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">if</span> (condicion) {
+    <span class="pl-en">hacerAlgo</span>();
+
+} <span class="pl-k">else</span> <span class="pl-k">if</span> (otraCondicion) {
+    <span class="pl-en">hacerOtraCosa</span>();
+
+} <span class="pl-k">else</span> {
+    <span class="pl-en">hacerAlgoDistinto</span>();
+}</pre></div>
+<h2>
+<a id="user-content-for" class="anchor" href="#for" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">for</span> (<span class="pl-k">let</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-c1">5</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">`</span>i es <span class="pl-s1"><span class="pl-pse">${</span>i<span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>)
+}
+<span class="pl-c"><span class="pl-c">//</span> i es 0</span>
+<span class="pl-c"><span class="pl-c">//</span> i es 1</span>
+<span class="pl-c"><span class="pl-c">//</span> i es 2</span>
+<span class="pl-c"><span class="pl-c">//</span> i es 3</span>
+<span class="pl-c"><span class="pl-c">//</span> i es 4</span></pre></div>
+<h2>
+<a id="user-content-for-in" class="anchor" href="#for-in" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For in</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">nombres</span> <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>juan<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>marco<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>maría<span class="pl-pds">'</span></span>];
+
+<span class="pl-k">for</span>(<span class="pl-k">let</span> nombre <span class="pl-k">in</span> nombres) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(nombre);
+}
+<span class="pl-c"><span class="pl-c">//</span> juan</span>
+<span class="pl-c"><span class="pl-c">//</span> marco</span>
+<span class="pl-c"><span class="pl-c">//</span> maría</span></pre></div>
+<h2>
+<a id="user-content-while" class="anchor" href="#while" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>While</h2>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">while</span> (algo <span class="pl-k">==</span> <span class="pl-c1">true</span>) {
+    <span class="pl-en">procesarAlgo</span>(algo);
+}</pre></div>
+
+</body>
+</html>

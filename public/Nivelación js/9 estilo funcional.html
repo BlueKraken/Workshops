@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nivelación\9 estilo funcional.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-estilo-funcional" class="anchor" href="#estilo-funcional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Estilo funcional</h1>
+<p>La programación funcional es un paradigma que sigue las siguientes reglas:</p>
+<table>
+<thead>
+<tr>
+<th>Regla</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Todos los datos son inmutables</td>
+<td>Las funciones retornan un resultado independiente, no la mutación de los datos de entrada.</td>
+</tr>
+<tr>
+<td>Todas las funciones son puras</td>
+<td>Las funciones son agnósticas a todo lo que existe fuera de éstas. Sólo usa los recursos definidos dentro de ella.</td>
+</tr>
+</tbody>
+</table>
+<p>Esto implica que <strong>no es posible</strong> sufrir efectos secundarios al utilizar funciones bajo este paradigma. Además, las funciones son <strong>indempotentes</strong>.</p>
+<p>Ejemplo</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span> función impura, minumero puede cambiar por factores</span>
+<span class="pl-c"><span class="pl-c">//</span> externos, lo que la hace indempotenete</span>
+<span class="pl-k">let</span> minumero <span class="pl-k">=</span> <span class="pl-c1">4</span>;
+<span class="pl-k">const</span> <span class="pl-c1">sumarMinumero</span> <span class="pl-k">=</span> (<span class="pl-smi">n</span>) <span class="pl-k">=&gt;</span> minumero <span class="pl-k">+</span> n;
+
+<span class="pl-en">sumarMinumero</span>(<span class="pl-c1">3</span>); <span class="pl-c"><span class="pl-c">//</span> =&gt; 7;</span>
+<span class="pl-en">cambiarMinumero</span>();
+<span class="pl-en">sumarMinumero</span>(<span class="pl-c1">3</span>) <span class="pl-c"><span class="pl-c">//</span> =&gt; ????</span>
+
+<span class="pl-c"><span class="pl-c">//</span> función pura, no utiliza ningún recurso externo</span>
+<span class="pl-k">const</span> <span class="pl-c1">sumar</span> <span class="pl-k">=</span> (<span class="pl-smi">a</span>,<span class="pl-smi">b</span>) <span class="pl-k">=&gt;</span> a <span class="pl-k">+</span> b
+
+<span class="pl-en">sumar</span>(<span class="pl-c1">2</span>, <span class="pl-c1">5</span>) <span class="pl-c"><span class="pl-c">//</span> =&gt; 7, y siempre será 7, ergo, es indempotente.</span></pre></div>
+<p>Hay técnicas especializadas en la composición de funciones para poder realizar operaciones complejas sobre datos sin perder los fundamentos de éste paradigma. Es una materia bastante compleja y que demanda lectura y estudio, y dado que vamos a utilizar un <strong>estilo funcional</strong> y no un paradigma completo funcional (como utilizar F# o Haslell), hablaremos de las aplicaciones que podríamos adoptar de este estilo.</p>
+<h2>
+<a id="user-content-definición-de-funciones-puras" class="anchor" href="#definici%C3%B3n-de-funciones-puras" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Definición de funciones puras</h2>
+<p>En el caso de programar una libreta de notas, debería existir una función <code>calcularPromedio</code>. Esta debe ser una función pura, ya que sin importar cuándo no cómo, debería retornar el mismo promedio dadas las mismas notas.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">calcularPromedio</span> <span class="pl-k">=</span> (<span class="pl-k">...</span><span class="pl-v">notas</span>) <span class="pl-k">=&gt;</span>
+    <span class="pl-k">return</span> <span class="pl-smi">notas</span>.<span class="pl-en">reduce</span>((<span class="pl-smi">total</span>, <span class="pl-smi">actual</span>) <span class="pl-k">=&gt;</span> total <span class="pl-k">+=</span> actual) <span class="pl-k">/</span> <span class="pl-smi">notas</span>.<span class="pl-c1">length</span>;</pre></div>
+<p>Si quisiéramos, ahora, reaccionar a un promedio rojo, podríamos pensar que esta es una buena opción</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">calcularPromedio</span>(<span class="pl-k">...</span><span class="pl-v">notas</span>) {
+    <span class="pl-k">const</span> <span class="pl-c1">promedio</span> <span class="pl-k">=</span>
+        <span class="pl-smi">notas</span>.<span class="pl-en">reduce</span>((<span class="pl-smi">total</span>, <span class="pl-smi">actual</span>) <span class="pl-k">=&gt;</span> total <span class="pl-k">+=</span> actual) <span class="pl-k">/</span> <span class="pl-smi">notas</span>.<span class="pl-c1">length</span>;
+
+    <span class="pl-k">if</span> (promedio <span class="pl-k">&lt;</span> <span class="pl-c1">4</span>) {
+        <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+        <span class="pl-en">enviarNotificacion</span>(<span class="pl-smi">EstadoAcademico</span>.<span class="pl-smi">Reprobado</span>);
+    } <span class="pl-k">else</span> {
+        <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+        <span class="pl-en">enviarNotificacion</span>(<span class="pl-smi">EstadoAcademico</span>.<span class="pl-smi">Aprobado</span>);
+    }
+}</pre></div>
+<p>El problema con esta solución es que <code>calcularPromedio</code> pierde su integridad. <code>calcularPromedio</code> debe hacer eso y sólo eso, calcular el promedio, nada más ni nada menos. Hay que evitar hacer trabajos implícitos o no esperables. Dicho de otra manera: ¿Por qué el método calcularPromedio va a notificar de alguna manera a algun actor del sistema cuando claramente debe sólo calcular el promedio?</p>
+<p>Una solución más ad-oc sería la siguiente:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">calcularPromedio</span> <span class="pl-k">=</span> (<span class="pl-k">...</span><span class="pl-v">notas</span>) <span class="pl-k">=&gt;</span>
+    <span class="pl-k">const</span> <span class="pl-c1">promedio</span> <span class="pl-k">=</span>
+        <span class="pl-smi">notas</span>.<span class="pl-en">reduce</span>((<span class="pl-smi">total</span>, <span class="pl-smi">actual</span>) <span class="pl-k">=&gt;</span> total <span class="pl-k">+=</span> actual) <span class="pl-k">/</span> <span class="pl-smi">notas</span>.<span class="pl-c1">length</span>;
+
+<span class="pl-c"><span class="pl-c">//</span> no tiene por que se una función pura</span>
+<span class="pl-k">const</span> <span class="pl-c1">manejarPromedio</span> <span class="pl-k">=</span> (<span class="pl-smi">alumno</span>) <span class="pl-k">=&gt;</span> {
+    <span class="pl-k">const</span> <span class="pl-c1">promedio</span> <span class="pl-k">=</span> <span class="pl-en">calcularPromedio</span>(<span class="pl-smi">alumno</span>.<span class="pl-smi">notas</span>);
+
+    <span class="pl-k">if</span> (promedio <span class="pl-k">&lt;</span> <span class="pl-c1">4</span>) {
+        <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+        <span class="pl-en">enviarNotificacion</span>(<span class="pl-smi">EstadoAcademico</span>.<span class="pl-smi">Reprobado</span>);
+    } <span class="pl-k">else</span> {
+        <span class="pl-c"><span class="pl-c">/*</span> ... <span class="pl-c">*/</span></span>
+        <span class="pl-en">enviarNotificacion</span>(<span class="pl-smi">EstadoAcademico</span>.<span class="pl-smi">Aprobado</span>);
+    }
+}</pre></div>
+<p>De esta manera, la función <code>calcularPromedio</code> no pierde su integridad, sigue haciendo exactamente lo que uno espera al leer su declaración. Dejando que la función llamada <code>manejarPromedio</code> reaccione al promedio del alumno.</p>
+
+</body>
+</html>
