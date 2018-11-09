@@ -2,7 +2,7 @@ const Markdown = require('markdown-to-html').GithubMarkdown;
 const fs = require('fs');
 const path = require('path');
 
-const targetDir = 'public';
+const parentDir = 'public';
 
 const options = {
     stylesheet: '../github-markdown.css',
@@ -23,7 +23,7 @@ const writeHtmlFromMarkDown = (fileName) => {
         }
         
         const targetFileName = fileName.replace('md', 'html');
-        const targetPath = path.join(targetDir, targetFileName);
+        const targetPath = path.join(parentDir, targetFileName);
         
         // Agrega clase necesaria para aplicar estilos
         md.html = md.html.replace('<body>', '<body class="markdown-body">');
@@ -42,6 +42,13 @@ const dirName = 'Typescript';
 
 fs.readdir(dirName, {}, (error, files) => {
     console.log(`Reading directory ${dirName}`);
+
+    const targetDir = path.join(parentDir, dirName);
+
+    if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir);
+    }
+
     if (error) {
         console.error(`Error at reading directory ${dirName}`, error);
         process.exit();
