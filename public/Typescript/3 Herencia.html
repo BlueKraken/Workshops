@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Typescript\3 Herencia.md</title>
+  <link rel="stylesheet" href="../github-markdown.css">
+</head>
+<body class="markdown-body">
+<h1>
+<a id="user-content-herencia" class="anchor" href="#herencia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Herencia</h1>
+<p>Cuando una clase hija es construida, esta DEBE llamar al constructor de la clase padre, entregándole todos los parámetros necesarios para que la construcción de la base sea correcta.</p>
+<div class="highlight highlight-source-ts"><pre><span class="pl-k">class</span> <span class="pl-en">Asiento</span> {
+    nombre<span class="pl-k">:</span> <span class="pl-c1">string</span>;
+
+    <span class="pl-k">constructor</span>(<span class="pl-v">nombre</span><span class="pl-k">:</span> <span class="pl-c1">string</span>) {
+        <span class="pl-c1">this</span>.<span class="pl-smi">nombre</span> <span class="pl-k">=</span> <span class="pl-smi">nombre</span>;
+    }
+}
+
+<span class="pl-k">class</span> <span class="pl-en">Silla</span> {
+    cantidadPatas<span class="pl-k">:</span> <span class="pl-c1">string</span>;
+
+    <span class="pl-k">constructor</span>(<span class="pl-v">nombre</span><span class="pl-k">:</span> <span class="pl-c1">string</span>, <span class="pl-v">cantidadPatas</span><span class="pl-k">:</span> <span class="pl-c1">number</span>) {
+        <span class="pl-c"><span class="pl-c">//</span> Super corresponde a la llamada al constructor padre de la clase.</span>
+        <span class="pl-c"><span class="pl-c">//</span> En este caso Asiento.constructor(nombre)</span>
+        <span class="pl-c1">super</span>(<span class="pl-smi">nombre</span>);
+        <span class="pl-c1">this</span>.<span class="pl-smi">material</span> <span class="pl-k">=</span> <span class="pl-smi">material</span>;
+    }
+}
+
+<span class="pl-k"><span class="pl-k">const</span></span> miSilla <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Silla</span>(<span class="pl-s"><span class="pl-pds">'</span>Silla de madera<span class="pl-pds">'</span></span>, <span class="pl-c1">4</span>);
+
+<span class="pl-c1">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">miSilla</span>.<span class="pl-smi">nombre</span>) <span class="pl-c"><span class="pl-c">//</span> Silla de madera</span></pre></div>
+
+</body>
+</html>
